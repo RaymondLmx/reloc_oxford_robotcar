@@ -157,8 +157,8 @@ def test(test_set, epoch=0, write_tboard=False):
             del input, image_encoding, vlad_encoding
     del test_data_loader
 
-    query_features = sample_features[test_set.n_samples:].astype('float32')
-    sample_features = sample_features[: test_set.n_samples].astype('float32')
+    query_features = sample_features[test_set.sample_set.num:].astype('float32')
+    sample_features = sample_features[: test_set.sample_set.num].astype('float32')
 
     print('====> Building faiss index')
     faiss_index = faiss.IndexFlatL2(pool_size)
