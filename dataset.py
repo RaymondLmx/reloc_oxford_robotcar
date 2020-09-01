@@ -13,9 +13,9 @@ from trajectory import Trajectory
 
 # settings
 root = CONFIG.DATA_PATH
+sample_rate = 10
 
-
-def get_whole_train_set(only_sample=False, sample_rate=0):
+def get_whole_train_set(only_sample=False):
 
     query_set = Trajectory('2019-01-10-11-46-21-radar-oxford-10k')
     sample_set = Trajectory('2019-01-10-12-32-52-radar-oxford-10k -map')
@@ -27,7 +27,7 @@ def get_whole_train_set(only_sample=False, sample_rate=0):
     return WholeDataset(root, query_set, sample_set, only_sample=only_sample)
 
 
-def get_triplet_train_set(sample_rate=0):
+def get_triplet_train_set():
 
     query_set = Trajectory('2019-01-10-11-46-21-radar-oxford-10k')
     sample_set = Trajectory('2019-01-10-12-32-52-radar-oxford-10k -map')

@@ -1,4 +1,3 @@
-import datetime
 import shutil
 import torch
 import torch.optim as optim
@@ -10,6 +9,7 @@ import math
 import json
 import matplotlib.pyplot as plt
 import torchvision.transforms as transforms
+from datetime import datetime
 from config.template import CONFIG
 from torch.utils.data import DataLoader, SubsetRandomSampler
 from torch.utils.data.dataset import Subset
@@ -226,7 +226,7 @@ if CONFIG.MODE == 'train':
 
     train_set = dataset.get_triplet_train_set()
     print('====> Training query set:', len(train_set))
-    # TODO
+
     whole_val_set = dataset.get_whole_val_set()
     print('===> Evaluating on val set, query count:', whole_val_set.query_set.num)
 
