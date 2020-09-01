@@ -299,7 +299,7 @@ elif CONFIG.MODE == 'train':
 
     with open(join(save_path, 'flag.json'), 'w') as f:
         f.write(json.dumps(
-            {key: CONFIG.__dict__[key] for key in CONFIG.__dict__}))
+            {key: value for key, value in vars(CONFIG).items() if '__' not in key}))
     print('===> Saving state to:', logdir)
 
     not_imporved = 0
