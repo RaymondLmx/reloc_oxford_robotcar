@@ -53,7 +53,8 @@ data_loader = DataLoader(dataset=cluster_set,
                          pin_memory=cuda,
                          sampler=sampler)
 
-init_cache = join('centroids', 'vgg16_' + sample_dataset + str(CONFIG.N_CLUSTERS) + '_desc_cen.hdf5')
+init_cache = join('centroids',
+                  'vgg16_' + sample_dataset + '_sampled_%d_' % sample_rate if sample_rate>1 else '_' + str(CONFIG.N_CLUSTERS) + '_desc_cen.hdf5')
 with h5py.File(init_cache, mode='w') as h5:
     with torch.no_grad():
         model.eval()
