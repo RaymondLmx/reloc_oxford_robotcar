@@ -78,7 +78,7 @@ with h5py.File(init_cache, mode='w') as h5:
                 del input, radar_descriptors
 
     print('====> Clustering..')
-    kmeans = faiss.Kmeans(CONFIG.ENCODER_DIM, CONFIG.N_CLUSTERS, 100, verbose=False)
+    kmeans = faiss.Kmeans(CONFIG.ENCODER_DIM, CONFIG.N_CLUSTERS, niter=100, verbose=False)
     kmeans.train(sample_features[...])
 
     print('====> Storing centroids', kmeans.centroids.shape)
