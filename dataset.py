@@ -295,7 +295,7 @@ class TripletDataset(Dataset):
         plt.scatter(pos_gt[0], pos_gt[1], c='g', marker='+', alpha=0.5)
         plt.scatter(neg_gt[:, 0], neg_gt[:, 1], c='r', marker='x', alpha=0.5)
         plt.savefig(os.path.join('train_batch_plot', str(query_index) + '_%d.png' % self.query_set.time_stamps[query_index]))
-
+        plt.close()
 
 
 
