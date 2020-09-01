@@ -27,6 +27,7 @@ CFG = CONFIG()
 
 cuda = torch.cuda.is_available()
 device = torch.device('cuda' if cuda else 'cpu')
+print(device)
 
 # ===================================================================================
 def train(epoch):
