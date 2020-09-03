@@ -14,20 +14,15 @@ import faiss
 # settings
 sample_dataset = '2019-01-10-12-32-52-radar-oxford-10k -map'
 query_dataset = '2019-01-10-11-46-21-radar-oxford-10k'
-sample_rate = 10
 
 cuda = torch.cuda.is_available()
 device = torch.device('cuda' if cuda else 'cpu')
-
 
 # load dataset
 print('===> Loading dataset(s)')
 
 query_set = Trajectory(query_dataset)
 sample_set = Trajectory(sample_dataset)
-if sample_rate > 1:
-    query_set.downsample(sample_rate)
-    sample_set.downsample(sample_rate)
 
 cluster_set = dataset.WholeDataset(CONFIG.DATA_PATH, query_set, sample_set, only_sample=True)
 
@@ -53,8 +48,7 @@ data_loader = DataLoader(dataset=cluster_set,
                          pin_memory=cuda,
                          sampler=sampler)
 
-init_cache = join('centroids',
-                  'vgg16_' + sample_dataset + ('_sampled_%d_' % sample_rate) if sample_rate>1 else '_' + str(CONFIG.N_CLUSTERS) + '_desc_cen.hdf5')
+init_cache = join('centroids', 'vgg16_train_' + str(CONFIG.N_CLUSTERS) + '_desc_cen.hdf5')
 with h5py.File(init_cache, mode='w') as h5:
     with torch.no_grad():
         model.eval()
