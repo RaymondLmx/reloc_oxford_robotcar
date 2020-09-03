@@ -19,7 +19,7 @@ from os.path import join, exists, isfile
 from sklearn.cluster import KMeans
 from torch.utils.tensorboard import SummaryWriter
 from PIL import Image
-#import faiss
+import faiss
 
 # ===================================================================================
 # settings
