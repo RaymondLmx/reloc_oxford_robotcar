@@ -195,7 +195,7 @@ def test(test_set, epoch=0, write_tboard=False):
     plt.ylabel('y', fontsize=14)
     plt.xlim(-200, 1200)
     plt.ylim(-500, 900)
-    plt.scatter(test_set.query_set.ground_truth[:, 0], test_set.query_set.ground_truth[:, 1], c='y', s=0.3)
+    plt.scatter(test_set.sample_set.ground_truth[:, 0], test_set.sample_set.ground_truth[:, 1], c='y', s=0.3)
     plt.scatter(pred_trajectory[:, 0], pred_trajectory[:, 1], s=0.3)
     img_path = join(save_path, 'prediction.png')
     plt.savefig(img_path)
