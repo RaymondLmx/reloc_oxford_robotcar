@@ -26,7 +26,7 @@ sample_set = Trajectory(sample_dataset)
 
 cluster_set = dataset.WholeDataset(CONFIG.DATA_PATH, query_set, sample_set, only_sample=True)
 
-print('====> ! %s loaded, sampled %d' % (sample_dataset, sample_rate))
+print('====> ! %s loaded' % sample_dataset)
 
 
 # build model
