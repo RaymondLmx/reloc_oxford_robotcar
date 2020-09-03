@@ -5,8 +5,8 @@ class CONFIG:
         config of the environment
     """
     # main
-    MODE = 'train'
-    RESUME = ''
+    MODE = 'test'
+    RESUME = 'Sep03_01-22-30_vgg16_netvlad'
     WHICH_CHECKPOINT = 'latest' # latest best
     DATASET_SIZE = 'whole'
     START_EPOCH = 0

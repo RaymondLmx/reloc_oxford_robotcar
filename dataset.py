@@ -13,7 +13,8 @@ from trajectory import Trajectory
 
 # settings
 root = CONFIG.DATA_PATH
-sample_rate = 10
+sample_rate = 0
+
 
 def get_whole_train_set(only_sample=False):
 
