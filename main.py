@@ -152,7 +152,7 @@ def test(test_set, epoch=0, write_tboard=False):
             vlad_encoding = model.pool(image_encoding)
 
             sample_features[indices.detach().numpy(), :] = vlad_encoding.detach().cpu().numpy()
-            if i % 50 == 0 or len(test_data_loader) <= 10:
+            if i % 100 == 0 or len(test_data_loader) <= 10:
                 print("==> Batch ({}/{})".format(i, len(test_data_loader)), flush=True)
             del input, image_encoding, vlad_encoding
     del test_data_loader

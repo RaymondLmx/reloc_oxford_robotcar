@@ -265,7 +265,7 @@ class TripletDataset(Dataset):
         negatives = torch.stack(negatives, 0)
 
         # plot
-        self.plot_batch(index, pos_index, neg_indices)
+        # self.plot_batch(index, pos_index, neg_indices)
 
         return query, positive, negatives, [index, pos_index] + neg_indices.tolist()
 
