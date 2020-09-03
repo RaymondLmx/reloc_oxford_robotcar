@@ -6,7 +6,7 @@ class CONFIG:
     """
     # main
     MODE = 'test'
-    RESUME = 'Sep03_01-22-30_vgg16_netvlad'
+    RESUME = 'runs/Sep03_01-22-30_vgg16_netvlad'
     WHICH_CHECKPOINT = 'latest' # latest best
     DATASET_SIZE = 'whole'
     START_EPOCH = 0

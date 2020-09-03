@@ -259,7 +259,7 @@ criterion = nn.TripletMarginLoss(margin=CONFIG.MARGIN**0.5,
                                  reduction='sum').to(device)
 
 # ===================================================================================
-# 5. checkpoint TODO
+# 5. checkpoint
 if CONFIG.RESUME:
     if CONFIG.WHICH_CHECKPOINT == 'latest':
         checkpoint_path = join(CONFIG.RESUME, 'checkpoints', 'checkpoint.pth.tar')
