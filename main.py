@@ -19,7 +19,7 @@ from os.path import join, exists, isfile
 from sklearn.cluster import KMeans
 from torch.utils.tensorboard import SummaryWriter
 from PIL import Image
-import faiss
+#import faiss
 
 # ===================================================================================
 # settings
@@ -72,8 +72,8 @@ def train(epoch):
                                        collate_fn=dataset.collate_fn,
                                        pin_memory=cuda)
 
-        print('Allocated:', torch.cuda.memory_allocated())
-        print('Cached:', torch.cuda.memory_cached())
+        # print('Allocated:', torch.cuda.memory_allocated())
+        # print('Cached:', torch.cuda.memory_cached())
 
         model.train()
         for iteration, (query, positive, negatives, neg_count, indices) in enumerate(train_data_loader, start_iter):
@@ -177,7 +177,7 @@ def test(test_set, epoch=0, write_tboard=False):
             if np.any(np.in1d(pred[:n], gt[q_index])):
                 correct_at_n[i:] += 1
                 break
-    recall_at_n = correct_at_n / test_set.n_queries
+    recall_at_n = correct_at_n / test_set.query_set.num
 
     recalls = {}
     for i, n in enumerate(n_values):
@@ -188,15 +188,15 @@ def test(test_set, epoch=0, write_tboard=False):
 
     # plot the prediction
     _, pred = faiss_index.search(query_features, 1)
-    pred_trajectory = test_set.samples_gt[pred.squeeze()]
+    pred_trajectory = test_set.sample_set.ground_truth[pred.squeeze()]
 
     plt.title('trajectory', fontsize=15)
     plt.xlabel('x', fontsize=14)
     plt.ylabel('y', fontsize=14)
     plt.xlim(-200, 1200)
     plt.ylim(-500, 900)
-    plt.scatter(pred_trajectory[:, 0], pred_trajectory[:, 1], s=0.5)
-    plt.scatter(test_set.queries_gt[:, 0], test_set.queries_gt[:, 1], c='y', s=0.3)
+    plt.scatter(test_set.query_set.ground_truth[:, 0], test_set.query_set.ground_truth[:, 1], c='y', s=0.3)
+    plt.scatter(pred_trajectory[:, 0], pred_trajectory[:, 1], s=0.3)
     img_path = join(save_path, 'plt_cache', 'prediction.png')
     plt.savefig(img_path)
     plt.show()

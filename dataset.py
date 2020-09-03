@@ -125,7 +125,7 @@ class WholeDataset(Dataset):
             knn.fit(self.sample_set.ground_truth)
 
             self.distances, self.positives = knn.radius_neighbors(self.query_set.ground_truth,
-                                                                  radius=CONFIG.POS_THREADS)
+                                                                  radius=CONFIG.NONTRIV_POS_THREADS)
 
         return self.positives
 

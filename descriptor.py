@@ -18,7 +18,7 @@ class NetVLAD(nn.Module):
             alpha           [float] : parameter of initialization
             input_normalize [bool]  : if apply L_2 normalization to input
     '''
-    def __init__(self, num_clusters=64, dim=512, input_normalize=True, vlad_v2=True):
+    def __init__(self, num_clusters=64, dim=512, input_normalize=True, vlad_v2=False):
         super(NetVLAD, self).__init__()
         self.num_clusters = num_clusters
         self.dim = dim
@@ -112,6 +112,9 @@ def descriptor(mode, resume, num_clusters=64, dim=512):
     for l in layers[:-5]:
         for p in l.parameters():
             p.requires_grad = False
+
+    if mode == 'cluster':
+        layers.append(L2Norm())
 
     encoder = nn.Sequential(*layers)
     model = nn.Module()
