@@ -34,6 +34,8 @@ def train(epoch):
     """
         train
     """
+    print("Epoch{}/{} lr={}".format(epoch, CONFIG.N_EPOCHS, optimizer.param_groups[0]["lr"]))
+    print("-" * 10)
     epoch_loss = 0
     start_iter = 1
 
@@ -304,7 +306,7 @@ elif CONFIG.MODE == 'train':
 
     not_imporved = 0
     best_score = 0
-    for epoch in range(CONFIG.START_EPOCH, CONFIG.N_EPOCHS+1):
+    for epoch in range(CONFIG.START_EPOCH+1, CONFIG.N_EPOCHS+1):
 
         scheduler.step(epoch)
         train(epoch)

@@ -26,7 +26,7 @@ class CONFIG:
     MARGIN = 0.1
 
     # optimizer
-    LR = 0.001
+    LR = 0.00001
     LR_STEP = 5
     LR_GAMMA = 0.5
     WEIGHT_DECAY = 0.001
