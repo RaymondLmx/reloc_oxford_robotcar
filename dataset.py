@@ -13,7 +13,7 @@ from trajectory import Trajectory
 
 # settings
 root = CONFIG.DATA_PATH
-sample_rate = 0
+sample_rate = 10
 
 
 def get_whole_train_set(only_sample=False):
@@ -126,7 +126,7 @@ class WholeDataset(Dataset):
             knn.fit(self.sample_set.ground_truth)
 
             self.distances, self.positives = knn.radius_neighbors(self.query_set.ground_truth,
-                                                                  radius=10)
+                                                                  radius=CONFIG.NONTRIV_POS_THREADS)
 
         return self.positives
 

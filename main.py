@@ -19,11 +19,10 @@ from os.path import join, exists, isfile
 from sklearn.cluster import KMeans
 from torch.utils.tensorboard import SummaryWriter
 from PIL import Image
-import faiss
+# import faiss
 
 # ===================================================================================
 # settings
-CFG = CONFIG()
 
 cuda = torch.cuda.is_available()
 device = torch.device('cuda' if cuda else 'cpu')
